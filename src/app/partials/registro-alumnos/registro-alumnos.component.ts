@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { FacadeService } from 'src/app/services/facade.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 
 @Component({
@@ -29,16 +30,29 @@ export class RegistroAlumnosComponent implements OnInit {
     private router: Router,
     private location : Location,
     public activatedRoute: ActivatedRoute,
+    private facadeService: FacadeService,
     private alumnosService: AlumnosService
   ) { }
 
   ngOnInit(): void {
-    this.alumno = this.alumnosService.esquemaAlumno();
-    // Rol del usuario
-    this.alumno.rol = this.rol;
-
-    console.log("Datos alumno: ", this.alumno);
+    //El primer if valida si existe un parámetro en la URL
+    if (this.activatedRoute.snapshot.params['id'] != undefined) {
+      this.editar = true;
+      //Asignamos a nuestra variable global el valor del ID que viene por la URL
+      this.idUser = this.activatedRoute.snapshot.params['id'];
+      console.log("ID User: ", this.idUser);
+      //Al iniciar la vista asignamos los datos del user
+      this.alumno = this.datos_user;
+    } else {
+      // Si no va a this.editar, entonces inicializamos el JSON para registro nuevo
+      this.alumno = this.alumnosService.esquemaAlumno();
+      this.alumno.rol = this.rol;
+      this.token = this.facadeService.getSessionToken();
+    }
+    //Imprimir datos en consola
+    console.log("Alumno: ", this.alumno);
   }
+
 
   public regresar(){
     this.location.back();
@@ -80,6 +94,27 @@ export class RegistroAlumnosComponent implements OnInit {
 
   public actualizar(){
     // Lógica para actualizar los datos de un alumno existente
+    this.errors = {};
+    this.errors = this.alumnosService.validarAlumno(this.alumno, this.editar);
+    if(Object.keys(this.errors).length > 0){
+      return false;
+    }
+    // Ejecutamos el servicio de actualización
+    this.alumnosService.actualizarAlumno(this.alumno).subscribe(
+      (response) => {
+        // Redirigir o mostrar mensaje de éxito
+        alert("Alumno actualizado exitosamente");
+        console.log("Alumno actualizado: ", response);
+        this.router.navigate(["alumnos"]);
+      },
+      (error) => {
+        // Manejar errores de la API
+        alert("Error al actualizar alumnos");
+        console.error("Error al actualizar alumnos: ", error);
+      }
+    );
+
+
   }
 
   //Funciones para password

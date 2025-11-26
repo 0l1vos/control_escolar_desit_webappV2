@@ -1,3 +1,4 @@
+import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FacadeService } from 'src/app/services/facade.service';
@@ -33,6 +34,7 @@ export class RegistroUsuariosScreenComponent implements OnInit {
     public facadeService: FacadeService,
     private administradoresService: AdministradoresService,
     private maestrosService: MaestrosService,
+    private AlumnosService: AlumnosService,
   ) { }
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class RegistroUsuariosScreenComponent implements OnInit {
           alert("No se pudo obtener el administrador seleccionado");
         }
       );
-    }else if(this.rol == "maestro"){
+    }else if(this.rol == "maestros"){
       this.maestrosService.obtenerMaestroPorID(this.idUser).subscribe(
         (response) => {
           this.user = response;
@@ -88,11 +90,26 @@ export class RegistroUsuariosScreenComponent implements OnInit {
           this.isMaestro = true;
         }, (error) => {
           console.log("Error: ", error);
-          alert("No se pudo obtener el administrador seleccionado");
+          alert("No se pudo obtener el maestro seleccionado");
         }
       );
-    }else if(this.rol == "alumno"){
+    }else if(this.rol == "alumnos"){
       // TODO: Implementar lógica para obtener alumno por ID
+       this.AlumnosService.obtenerAlumnoPorID(this.idUser).subscribe(
+        (response) => {
+          this.user = response;
+          console.log("Usuario original obtenido: ", this.user);
+          // Asignar datos, soportando respuesta plana o anidada
+          this.user.first_name = response.user?.first_name || response.first_name;
+          this.user.last_name = response.user?.last_name || response.last_name;
+          this.user.email = response.user?.email || response.email;
+          this.user.tipo_usuario = this.rol;
+          this.isAlumno = true;
+        }, (error) => {
+          console.log("Error: ", error);
+          alert("No se pudo obtener el alumno seleccionado");
+        }
+      );
     }
 
   }

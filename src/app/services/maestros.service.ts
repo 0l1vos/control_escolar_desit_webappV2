@@ -148,6 +148,18 @@ export class MaestrosService {
     return this.http.get<any>(`${environment.url_api}/maestros/?id=${idMaestro}`, { headers });
   }
 
+   // Petición para actualizar un administrador
+  public actualizarMaestro(data: any): Observable<any> {
+    const token = this.facadeService.getSessionToken();
+    let headers: HttpHeaders;
+    if (token) {
+      headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
+    } else {
+      headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      console.log("No se encontró el token del usuario");
+    }
+return this.http.put<any>(`${environment.url_api}/maestros/?id=${data.id}`, data, { headers });  }
+
   //Servicio para eliminar un maestro
   public eliminarMaestro(idMaestro: number): Observable<any>{
     // Verificamos si existe el token de sesión

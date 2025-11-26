@@ -76,6 +76,14 @@ export class MaestrosScreenComponent implements OnInit {
     );
   }
 
+ applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   public goEditar(idUser: number) {
     this.router.navigate(["registro-usuarios/maestros/" + idUser]);
   }

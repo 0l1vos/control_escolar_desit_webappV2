@@ -32,6 +32,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 // Paginación
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 //Para el paginator en español
 import { getSpanishPaginatorIntl } from './shared/spanish-paginator-intl';
 
@@ -95,7 +96,8 @@ import { GraficasScreenComponent } from './screens/graficas-screen/graficas-scre
     MatTableModule,
     MatPaginatorModule,
     NgChartsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSortModule,
   ],
   providers: [
     CookieService,
