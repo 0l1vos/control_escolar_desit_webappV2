@@ -15,6 +15,7 @@ export class NavbarUserComponent implements OnInit {
   public showUserMenu: boolean = false;
   public mobileOpen: boolean = false;
   public userRole: string = '';
+  isMateriasOpen = false;
 
   // Estas variables se utilizarán por si se habilita el tema oscuro
   paletteMode: 'light' | 'dark' = 'light';
@@ -88,6 +89,9 @@ export class NavbarUserComponent implements OnInit {
     this.mobileOpen = false;
   }
 
+  toggleMateriasMenu() {
+    this.isMateriasOpen = !this.isMateriasOpen;
+  }
   toggleUserMenu() {
     this.showUserMenu = !this.showUserMenu;
   }

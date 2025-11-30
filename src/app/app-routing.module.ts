@@ -9,7 +9,8 @@ import { AlumnosScreenComponent } from './screens/alumnos-screen/alumnos-screen.
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
 import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-screen.component';
 import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
-
+import { RegistroMateriasScreenComponent } from './screens/registro-materias-screen/registro-materias-screen.component';
+import { MateriasScreenComponent } from './screens/materias-screen/materias-screen.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +19,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginScreenComponent },
       { path: 'registro-usuarios', component: RegistroUsuariosScreenComponent },
-      { path: 'registro-usuarios/:rol/:id', component: RegistroUsuariosScreenComponent }
+      { path: 'registro-usuarios/:rol/:id', component: RegistroUsuariosScreenComponent },
+      {  path: 'registro-materias', component: RegistroMateriasScreenComponent},
+      { path: 'registro-materias/:id', component: RegistroMateriasScreenComponent, pathMatch: 'full' },
+      { path: 'lista-materias', component: MateriasScreenComponent, pathMatch: 'full' },
+
     ]
   },
   {
@@ -30,6 +35,8 @@ const routes: Routes = [
       { path: 'alumnos', component: AlumnosScreenComponent },
       { path: 'maestros', component: MaestrosScreenComponent },
       { path: 'graficas', component: GraficasScreenComponent }
+
+
     ]
   },
   // fallback route

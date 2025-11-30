@@ -378,3 +378,67 @@
   font-size: 1.08rem;
   padding: 1rem 1.2rem;
 }
+/* --- ESTILOS PARA EL DROPDOWN DE MATERIAS --- */
+
+/* 1. Reset para el <li> contenedor */
+.dropdown-parent-li {
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+/* 2. Header (El botón que abre/cierra) */
+.scoop-navbar-item.dropdown-header {
+  display: flex;
+  justify-content: space-between; /* Texto a la izq, flecha a la der */
+  align-items: center;
+  cursor: pointer;
+
+  .label-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre icono libro y texto */
+  }
+
+  /* Animación flecha */
+  .arrow-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem; /* Ajusta tamaño si es necesario */
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/* 3. Submenú Animado */
+.scoop-submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.15); /* Fondo un poco más oscuro */
+
+  /* Lógica de la animación */
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease, visibility 0.35s;
+
+  &.expanded {
+    max-height: 200px; /* Altura suficiente */
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Items dentro del submenú */
+  .sub-item {
+    padding-left: 2.5rem !important; /* Más sangría para jerarquía */
+    font-size: 0.95rem; /* Texto un pelín más chico */
+
+    .material-icons {
+      font-size: 1.1rem;
+      margin-right: 10px;
+    }
+  }
+}
