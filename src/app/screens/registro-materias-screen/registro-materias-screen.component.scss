@@ -4,17 +4,17 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alineado arriba */
-  background-color: #f5f5f5; /* Un fondo gris muy suave para resaltar el formulario */
+  align-items: flex-start;
+  background-color: #f5f5f5;
   padding: 40px 20px;
 }
 
 .section-registro {
   width: 100%;
-  max-width: 900px; /* Ancho máximo controlado */
+  max-width: 900px;
   background-color: #fff;
-  border-radius: 12px; /* Bordes más suaves */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Sombra elegante */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -27,11 +27,11 @@
 
 /* ================= TYPOGRAPHY ================= */
 .title-user {
-  font-family: 'Nexa-Bold', sans-serif; /* Asegúrate de tener la fuente o usa sans-serif */
+  font-family: 'Nexa-Bold', sans-serif;
   font-size: 2rem;
   color: #23395d;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #eee; /* Línea divisoria sutil */
+  border-bottom: 2px solid #eee;
   padding-bottom: 10px;
   width: 100%;
   text-align: left;
@@ -51,11 +51,10 @@ mat-form-field {
   font-size: 14px;
 }
 
-/* Ajuste para columnas de Horario (Bootstrap Grid Fix) */
 .row {
   margin-left: -15px;
   margin-right: -15px;
-  width: calc(100% + 30px); /* Compensa márgenes negativos */
+  width: calc(100% + 30px);
 }
 
 .col-md-6, .col-12 {
@@ -69,7 +68,7 @@ mat-form-field {
   flex-wrap: wrap;
   gap: 20px;
   padding: 15px;
-  background-color: #f9f9f9; /* Fondo sutil para agruparlos */
+  background-color: #f9f9f9;
   border-radius: 8px;
   border: 1px solid #eee;
   margin-bottom: 10px;
@@ -81,7 +80,7 @@ mat-form-field {
 }
 
 .invalid-feedback {
-  color: #f44336; /* Rojo Material Design */
+  color: #f44336;
   font-size: 12px;
   margin-top: 5px;
   margin-left: 5px;
@@ -90,7 +89,7 @@ mat-form-field {
 /* ================= BOTONES ================= */
 .section-buttons {
   display: flex;
-  justify-content: flex-end; /* Botones a la derecha es estándar */
+  justify-content: flex-end;
   gap: 20px;
   margin-top: 40px;
   border-top: 1px solid #eee;
@@ -118,7 +117,7 @@ mat-form-field {
 }
 
 .btn-primary {
-  background-color: #23395d; /* Tu azul corporativo */
+  background-color: #23395d;
   color: #fff;
 
   &:hover {
@@ -141,11 +140,102 @@ mat-form-field {
   }
 
   .section-buttons {
-    flex-direction: column-reverse; /* Cancelar abajo en móvil */
+    flex-direction: column-reverse;
     gap: 10px;
 
     .btn {
       width: 100%;
     }
+  }
+}
+
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.section-registro {
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.title-user {
+  font-family: 'Nexa-Bold', sans-serif;
+  font-size: 2rem;
+  color: #23395d;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+  width: 100%;
+  display: block;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.error-msg {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-12, .col-md-6 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.checkbox-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-bottom: 5px;
+}
+
+.subtitle-field {
+  font-family: 'Nexa-Bold', sans-serif;
+  color: #555;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+
+  button {
+    min-width: 140px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-buttons {
+    flex-direction: column-reverse;
+    button { width: 100%; }
   }
 }

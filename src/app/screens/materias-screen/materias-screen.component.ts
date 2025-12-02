@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { FacadeService } from 'src/app/services/facade.service';
 import { MateriasService } from 'src/app/services/materias.service';
@@ -26,6 +27,7 @@ export class MateriasScreenComponent implements OnInit {
     private materiasService: MateriasService,
     private facadeService: FacadeService,
     private router: Router,
+    private location: Location,
     public dialog: MatDialog
   ) { }
 
@@ -38,12 +40,21 @@ export class MateriasScreenComponent implements OnInit {
     this.obtenerMaterias();
   }
 
+  public goHome(){
+    this.location.back();
+  }
+
   public obtenerMaterias(){
     this.materiasService.obtenerListaMaterias().subscribe(
       (response)=>{
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+
+        this.dataSource.filterPredicate = (data: any, filter: string) => {
+          const dataStr = (data.nrc + data.nombre).toLowerCase();
+          return dataStr.indexOf(filter) != -1;
+        };
       },
       (error)=>{
         alert("Error al obtener materias");
@@ -72,7 +83,7 @@ export class MateriasScreenComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result.isDelete){
+      if(result && result.isDelete){
         console.log("Materia eliminada");
         this.obtenerMaterias();
       }

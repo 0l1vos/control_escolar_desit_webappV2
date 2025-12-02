@@ -37,7 +37,6 @@ import { MatSortModule } from '@angular/material/sort';
 //Para el paginator en español
 import { getSpanishPaginatorIntl } from './shared/spanish-paginator-intl';
 
-// IMPORTANTE: añade el módulo de Sidenav
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Modulo para las gráficas
@@ -80,7 +79,8 @@ import { MateriasScreenComponent } from './screens/materias-screen/materias-scre
     GraficasScreenComponent,
     EditarMateriaComponent,
     RegistroMateriasScreenComponent,
-    MateriasScreenComponent
+    MateriasScreenComponent,
+    EditarMateriaComponent
   ],
   imports: [
     BrowserModule,

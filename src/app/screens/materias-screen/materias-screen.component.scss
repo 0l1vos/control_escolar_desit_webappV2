@@ -9,9 +9,26 @@
 
 .section-lista {
   width: 100%;
-  max-width: 1200px; /* Ancho máximo para que no se estire demasiado */
+  max-width: 1200px;
 }
 
+.header-lista {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+.btn-back {
+  margin-left: -10px;
+  color: #555;
+
+  &:hover {
+    color: #23395d;
+    background-color: rgba(0,0,0,0.05);
+  }
+}
 .title-user {
   font-family: 'Nexa-Bold', sans-serif;
   font-size: 2rem;
@@ -64,7 +81,6 @@ td.mat-cell {
 @media(max-width: 800px){
   .wrapper { padding: 10px; }
 
-  // Ajuste para scroll horizontal en móviles
   .table-container {
     overflow-x: auto;
   }

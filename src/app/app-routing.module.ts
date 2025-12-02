@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'login', component: LoginScreenComponent },
       { path: 'registro-usuarios', component: RegistroUsuariosScreenComponent },
       { path: 'registro-usuarios/:rol/:id', component: RegistroUsuariosScreenComponent },
-      {  path: 'registro-materias', component: RegistroMateriasScreenComponent},
+      { path: 'registro-materias', component: RegistroMateriasScreenComponent, pathMatch: 'full' },
       { path: 'registro-materias/:id', component: RegistroMateriasScreenComponent, pathMatch: 'full' },
       { path: 'lista-materias', component: MateriasScreenComponent, pathMatch: 'full' },
 
