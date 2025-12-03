@@ -120,7 +120,8 @@ export class RegistroMateriasScreenComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result && result.isUpdate){
+      // CORRECCIÓN: Simplemente verificamos si result es true
+      if(result === true){
         this.materiasService.actualizarMateria(this.materia).subscribe(
           (response) => {
             alert("Materia actualizada correctamente");
