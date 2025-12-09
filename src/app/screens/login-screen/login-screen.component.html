@@ -4,10 +4,10 @@
     <div class="login-form-section">
       <div class="login-brand">
         <img src="/assets/images/escudoB.png" alt="Logo BUAP" class="logo-buap" />
-        <span class="brand-title">Sistema Escolar</span>
+        <span class="brand-title">Regitro de equipos</span>
       </div>
       <h2 class="login-title">Iniciar sesión</h2>
-      <p class="login-subtitle">Ingresa los datos que registraste</p>
+      <p class="login-subtitle">Ingresa los datos de inicio de sesion</p>
       <form (ngSubmit)="login()" class="login-form" #form="ngForm">
         <div class="form-group">
           <label for="email">Correo electrónico</label>
@@ -46,9 +46,7 @@
           <a (click)="router.navigate(['olvide-contrasena'])">¿Olvidaste tu contraseña?</a>
         </div>
         <button class="btn-login" type="submit" [disabled]="load">Iniciar sesión</button>
-        <div class="form-register">
-          ¿No tienes cuenta? <a (click)="registrar()">Regístrate</a>
-        </div>
+
       </form>
     </div>
     <!-- Right: Image -->
@@ -57,7 +55,7 @@
         <h2>¡Bienvenido de nuevo!</h2>
         <p>Nos alegra verte otra vez</p>
       </div>
-      <img src="/assets/images/buap-fcc.jpg" alt="Ilustración de bienvenida" class="login-illustration" />
+      <img src="/assets/images/admin_buap.webp" alt="Ilustración de bienvenida" class="login-illustration" />
     </div>
   </div>
 </section>
